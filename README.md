@@ -1,8 +1,8 @@
-<H1 align="center">MojoLauncher (a.k.a. MJLauncher)</H1>
+<H1 align="center">Junior (a.k.a. Junior)</H1>
 
 <a href="./README_RU.md">Readme на русском</a>
 
-<img src="./app_mojo/src/main/assets/mojo.png" align="left" width="150" height="150" alt="MojoLauncher logo">
+<img src="./app_mojo/src/main/assets/mojo.png" align="left" width="150" height="150" alt="Junior logo">
 
 [![Android CI](https://github.com/MojoLauncher/MojoLauncher/workflows/Android%20CI/badge.svg)](https://github.com/MojoLauncher/MojoLauncher/actions)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MojoLauncher/MojoLauncher)](https://github.com/MojoLauncher/MojoLauncher/actions)
