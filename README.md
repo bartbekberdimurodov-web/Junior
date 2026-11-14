@@ -74,7 +74,7 @@ Contributions are welcome! We appreciate any type of contribution, not only code
 Any code change to this repository should be submitted as a pull request. The description should explain what the code does and give steps to execute it.
 
 ## Third party components, licenses and sources (when applicable)
-- [MojoLauncher](https://github.com/MojoLauncher/MojoLauncher): [GNU LGPLv3 License](https://github.com/MojoLauncher/MojoLauncher/blob/v3_openjdk/LICENSE)
+- [Junior](https://github.com/MojoLauncher/MojoLauncher): [GNU LGPLv3 License](https://github.com/MojoLauncher/MojoLauncher/blob/v3_openjdk/LICENSE)
 - Android Support Libraries: [Apache License 2.0](https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt).
 - [Holy GL4ES](https://github.com/Junior/gl4es_extra_extra/): [MIT License](https://github.com/ptitSeb/gl4es/blob/master/LICENSE).
 - [OpenJDK](https://github.com/MojoLauncher/openjdk-multiarch-jdk8u): [GNU GPLv2 License](https://openjdk.java.net/legal/gplv2+ce.html).
