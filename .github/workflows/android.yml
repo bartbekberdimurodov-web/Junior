@@ -23,7 +23,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v6
         continue-on-error: true
         with:
-          repo: MojoLauncher/LTW
+          repo: Junior/LTW
           workflow: android.yml
           workflow_conclusion: success
           name: output-aar
@@ -34,12 +34,12 @@ jobs:
         continue-on-error: true
         with:
           github_token: ${{ secrets.MESA_ACTIONS }}
-          repo: MojoLauncher/mesa-unified2
+          repo: Junior/mesa-unified2
           workflow: android.yml
           workflow_conclusion: success
-          branch: mojo/26.2
+          branch: JR/26.2
           name: mesa-aar
-          path: app_mojo/libs
+          path: app_JR/libs
 
       - uses: gradle/actions/setup-gradle@v4
         with:
@@ -53,26 +53,26 @@ jobs:
       - name: Create out directory
         run: mkdir out
       - name: Build Publishing .aab
-        if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
+        if: github.repository_owner == 'Junior' && github.ref_name == 'v3_openjdk'
         run: |
-          gradle :app_mojo:bundleFullGplay
-          mv app_mojo/build/outputs/bundle/fullGplay/app_mojo-full-gplay.aab out/app-gplay.aab
+          gradle :app_JR:bundleFullGplay
+          mv app_jr/build/outputs/bundle/fullGplay/app_jr-full-gplay.aab out/app-gplay.aab
 
       - name: Build Debug .apk
         run: |
           # Build the launcher
-          gradle :app_mojo:assembleFullDebug
-          mv app_mojo/build/outputs/apk/full/debug/app_mojo-full-debug.apk out/app-debug-full.apk
+          gradle :app_jr:assembleFullDebug
+          mv app_mojo/build/outputs/apk/full/debug/app_jr-full-debug.apk out/app-debug-full.apk
 
       - name: Build Debug .apk (No runtime)
         run: |
-          gradle :app_mojo:assembleNoruntimeDebug
-          mv app_mojo/build/outputs/apk/noruntime/debug/app_mojo-noruntime-debug.apk out/app-debug-noruntime.apk
+          gradle :app_jr:assembleNoruntimeDebug
+          mv app_jr/build/outputs/apk/noruntime/debug/app_jr-noruntime-debug.apk out/app-debug-noruntime.apk
       - name: Build Nightly Release .apk
-        if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
+        if: github.repository_owner == 'Junior' && github.ref_name == 'v3_openjdk'
         run: |
-          gradle :app_mojo:assembleFullPubRelease
-          mv app_mojo/build/outputs/apk/full/pubRelease/app_mojo-full-pubRelease.apk out/MojoLauncher-release.apk
+          gradle :app_jr:assembleFullPubRelease
+          mv app_jr/build/outputs/apk/full/pubRelease/app_jr-full-pubRelease.apk out/Junior-release.apk
       - name: Gen md5sums
         run: |
           md5sum out/app-debug-full.apk > out/app-debug-full.md5
@@ -91,17 +91,17 @@ jobs:
           path: out/app-debug-noruntime.apk
 
       - name: Release Nightly APK
-        if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
+        if: github.repository_owner == 'Junior' && github.ref_name == 'v3_openjdk'
         uses: softprops/action-gh-release@v3
         with:
-          name: MojoLauncher Nightly Builds
+          name: Junior Nightly Builds
           prerelease: true
           tag_name: nightly
           body: |
-            MojoLauncher nightly build.
+            Junior nightly build.
             Commit hash: ${{ github.sha }}
           files: |
-            out/MojoLauncher-release.apk
+            out/Junior-release.apk
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
@@ -111,11 +111,11 @@ jobs:
 
       - name: Upload onto the Google Play testing track
         continue-on-error: true
-        if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
+        if: github.repository_owner == 'Junior' && github.ref_name == 'v3_openjdk'
         uses: r0adkll/upload-google-play@v1.1.5
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_JSON }}
-          packageName: git.artdeell.mjlaunch
+          packageName: git.junior.junior
           releaseFiles: out/app-gplay.aab
           track: internal
           inAppUpdatePriority: 5
